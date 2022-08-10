@@ -1,7 +1,5 @@
 import streamlit as st
 from PIL import Image
-from io import BytesIO
-import requests
 
 # import os
 # os.system("pip install katonic-1.0-py3-none-any.whl")
@@ -13,8 +11,7 @@ from joblib import load
 import pickle
 import joblib
 
-response = requests.get(url='https://katonic.ai/favicon.ico')
-im = Image.open(BytesIO(response.content))
+im = Image.open("./favicon.ico")
 st.set_page_config(page_title='Movie Genre Prediction',
                    page_icon=im,
                    layout='wide',

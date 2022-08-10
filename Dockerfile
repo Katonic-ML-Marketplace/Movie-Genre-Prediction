@@ -1,9 +1,11 @@
 FROM python:3.8.2-slim
 
+WORKDIR /app
 COPY app.py .
 COPY best_model.joblib .
 COPY CountVectorizer.joblib .
 COPY TFIDF_transformer.joblib .
+COPY favicon.ico .
 COPY requirements.txt .
 COPY bloody-mary-genres-big.jpg .
 
