@@ -1,26 +1,22 @@
 import streamlit as st
 from PIL import Image
-from io import BytesIO
-import requests
 
-# import os
-# os.system("pip install katonic-1.0-py3-none-any.whl")
-
-import katonic
 from katonic.ml.client import MLClient
 
 from joblib import load
-import pickle
 import joblib
+import warnings
+warnings.filterwarnings('ignore')
 
-response = requests.get(url='https://katonic.ai/favicon.ico')
-im = Image.open(BytesIO(response.content))
+im = Image.open('img_src/favicon.ico')
 st.set_page_config(page_title='Movie Genre Prediction',
                    page_icon=im,
                    layout='wide',
                    initial_sidebar_state='auto')
+
 st.title("Movie Genre Prediction with Overview.")
-st.image("bloody-mary-genres-big.jpg")
+
+st.image("img_src/bloody-mary-genres-big.jpg")
 overview = st.text_input("Enter the Overview of a movie.")
 predict = st.button("Predict")
 
