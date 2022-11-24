@@ -37,13 +37,13 @@ if predict:
     overview = overview.replace('.', '')
     content.append(overview)
 
-    vectorize = load("CountVectorizer.joblib")
+    vectorize = load("models/CountVectorizer.joblib")
     X = vectorize.transform(content)
 
-    transformer = load("TFIDF_transformer.joblib")
+    transformer = load("models/TFIDF_transformer.joblib")
     X = transformer.transform(X)
 
-    model_ml = joblib.load("best_model.joblib")
+    model_ml = joblib.load("models/best_model.joblib")
 
     predsnb = model_ml.predict(X)
     infer_preds = []
