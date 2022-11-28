@@ -1,11 +1,15 @@
-FROM python:3.8.2-slim
+FROM quay.io/katonic/katonic-base-images:py38-base-conda4.9.2
+
+RUN mkdir -p img_src models
 
 COPY app.py .
-COPY best_model.joblib .
-COPY CountVectorizer.joblib .
-COPY TFIDF_transformer.joblib .
+COPY img_src/favicon.ico.jpg img_src/.
+COPY img_src/bloody_mary_genres.jpg img_src/.
+COPY models/best_model.joblib models/.
+COPY models/CountVectorizer.joblib models/.
+COPY models/TFIDF_transformer.joblib models/.
 COPY requirements.txt .
-COPY bloody-mary-genres-big.jpg .
+
 
 RUN pip install -r requirements.txt
 

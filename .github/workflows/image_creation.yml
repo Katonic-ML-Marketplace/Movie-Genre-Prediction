@@ -1,0 +1,31 @@
+name: build image
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  REGISTRY_SERVER: quay.io
+  REGISTRY_NAMESPACE: katonic
+  USER: ${{secrets.USER}}
+  PASSWORD: ${{secrets.PASSWORD}}
+  REPOSITORY_NAME: accelerators
+  TAG: movie-genre-prediction
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker login
+      run: |
+        docker login "${{ env.REGISTRY_SERVER }}" -u "${{ env.USER }}" -p "${{ env.PASSWORD }}"
+    
+    - name: Build the Docker image
+      run: |
+        docker build . --tag "${{ env.REGISTRY_SERVER }}"/"${{ env.REGISTRY_NAMESPACE }}"/"${{ env.REPOSITORY_NAME }}":"${{ env.TAG }}"
+      
+    - name: Docker Push
+      run: docker push "${{ env.REGISTRY_SERVER }}"/"${{ env.REGISTRY_NAMESPACE }}"/"${{ env.REPOSITORY_NAME }}":"${{ env.TAG }}"
