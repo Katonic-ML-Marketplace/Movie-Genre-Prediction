@@ -1,4 +1,4 @@
-FROM python:3.8.2-slim
+FROM quay.io/katonic/katonic-base-images:py38-base-conda4.9.2
 
 RUN mkdir -p img_src models
 
