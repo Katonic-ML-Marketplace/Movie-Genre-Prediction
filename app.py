@@ -16,7 +16,7 @@ st.set_page_config(page_title='Movie Genre Prediction',
 
 st.title("Movie Genre Prediction with Overview.")
 
-st.image("img_src/bloody-mary-genres-big.jpg")
+st.image("img_src/bloody_mary_genres.jpg")
 overview = st.text_input("Enter the Overview of a movie.")
 predict = st.button("Predict")
 
